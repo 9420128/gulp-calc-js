@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>JavaScript Конструктор</title>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="http://www.balkon-spb.ru/css/style.min.css"
+        />
+    </head>
+    <body>
+        <div class="uk-flexs uk-grid" uk-grid id="calculete">
+            <div
+                class="uk-width-1-4@l uk-width-1-2@s uk-first-column"
+                id="sidebarLeft"
+            ></div>
+            <!-- left END --><!-- center -->
+            <div class="uk-width-1-2@m uk-width-1-1@s tm-flex-first-l">
+                <div
+                    class="uk-child-width-expand uk-text-center uk-flex uk-flex-middle uk-grid"
+                    uk-grid
+                >
+                    <div class="uk-width-1-4 uk-width-1-5@m uk-first-column">
+                        <div class="tm-midle uk-margin-xlarge-top">
+                            <label class="uk-form-label tm-small"
+                                >Длина балкона (мм)</label
+                            >
+                            <input
+                                id="d"
+                                type="tel"
+                                minlength="3"
+                                maxlength="4"
+                                value="3000"
+                                class="uk-input uk-form-width-small"
+                            />
+                        </div>
+                        <div class="uk-margin-large-top">
+                            <label class="uk-form-label tm-small"
+                                >Высота ограждения (мм)</label
+                            >
+                            <input
+                                id="hp"
+                                type="tel"
+                                minlength="3"
+                                maxlength="4"
+                                value="1000"
+                                class="uk-input uk-form-width-small"
+                            />
+                        </div>
+                    </div>
+                    <div id="img" class="uk-text-center">
+                        <img
+                            src="http://www.balkon-spb.ru/calculator/ppppla.png"
+                            alt=""
+                        />
+                        <div class="uk-width-small uk-align-center">
+                            <label class="uk-form-label tm-small"
+                                >Ширина балкона (мм)</label
+                            >
+                            <input
+                                id="w"
+                                type="tel"
+                                minlength="3"
+                                maxlength="4"
+                                value="800"
+                                class="uk-input uk-form-width-small"
+                            />
+                        </div>
+                    </div>
+                    <div class="uk-width-1-4 uk-width-1-5@m">
+                        <div>
+                            <label class="uk-form-label tm-small"
+                                >Высота балкона (мм)</label
+                            >
+                            <input
+                                id="h"
+                                type="tel"
+                                minlength="3"
+                                maxlength="4"
+                                value="2550"
+                                class="uk-input uk-form-width-small"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- center END -->
+            <div class="uk-width-1-4@l uk-width-1-2@s">
+                <div id="sidebarRight"></div>
+                <span class="uk-form-label">Цена отделки</span>
+                <div
+                    class="uk-card uk-card-default uk-card-body uk-card-small uk-text-center uk-margin-medium-bottom"
+                >
+                    <input
+                        id="itog"
+                        type="text"
+                        value="29021 ₽"
+                        class="uk-h2 uk-text-center uk-width-1-1 uk-margin-remove-bottom"
+                    />
+                </div>
+                <a
+                    id="go"
+                    class="uk-button uk-button-primary uk-width-1-1"
+                    href="#go"
+                    uk-toggle=""
+                    >Параметры заказа</a
+                >
+                <style type="text/css">
+                    .uk-form-label {
+                        font-weight: 700;
+                        display: block;
+                        margin-bottom: 5px;
+                    }
+
+                    .tm-small {
+                        font-size: 10px;
+                        margin-bottom: 4px;
+                    }
+
+                    .uk-form-label:not(:first-child) {
+                        margin-top: 20px;
+                    }
+
+                    .tm-label-wrap label {
+                        margin-bottom: 5px;
+                        display: block;
+                    }
+
+                    #itog {
+                        border: none;
+                    }
+
+                    .uk-table-divider th:nth-child(3),
+                    .uk-table-divider th:nth-child(4) {
+                        text-align: center !important;
+                    }
+                </style>
+            </div>
+        </div>
+
+        <div id="app" class="container-fluid">
+            <!--    <div id="panel" class="bg-light sidebar"></div>-->
+            <!--    <div id="site" class="content"></div>-->
+        </div>
+        <style type="text/css">
+            .uk-form-label {
+                font-weight: 700;
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .tm-small {
+                font-size: 10px;
+                margin-bottom: 4px;
+            }
+
+            .uk-form-label:not(:first-child) {
+                margin-top: 20px;
+            }
+
+            .tm-label-wrap label {
+                margin-bottom: 5px;
+                display: block;
+            }
+
+            #itog {
+                border: none;
+            }
+
+            .table-border.uk-margin-large-top td:nth-child(3) {
+                text-align: left !important;
+            }
+
+            .uk-table-divider th:nth-child(3),
+            .uk-table-divider th:nth-child(4) {
+                text-align: center !important;
+            }
+        </style>
+
+        <form
+            class="uk-modal-full uk-modal uk-open"
+            id="go"
+            uk-modal=""
+            style="display: block"
+        >
+            <div class="uk-modal-dialog">
+                <div class="uk-grid-collapse uk-flex-middle uk-grid" uk-grid>
+                    <div
+                        class="uk-width-2-3@m uk-background-muted uk-first-column"
+                        uk-height-viewport=""
+                        style="min-height: calc(100vh)"
+                    >
+                        <div class="uk-card-body">
+                            <h3 id="myModalLabel">Параметры заказа</h3>
+                            <hr class="tm-hr uk-margin-large-bottom" />
+                            <h4>Отделка <span class="js-tip"></span></h4>
+                            <p class="js-gab"></p>
+                            <div class="uk-overflow-auto">
+                                <table
+                                    class="uk-table uk-table-divider"
+                                    id="tableCalc"
+                                >
+                                    <tbody>
+                                        <tr>
+                                            <th>Виды работ</th>
+                                            <th>Материал</th>
+                                            <th>Ед.изм</th>
+                                            <th>Стоимость</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Отделка стен</td>
+                                            <td class="js-ste"></td>
+                                            <td class="js-steNum"></td>
+                                            <td class="js-steSum">0.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Отделка потолка</td>
+                                            <td class="js-pot">
+                                                Пластиковые панели
+                                            </td>
+                                            <td class="js-potNum">2.4 м/кв</td>
+                                            <td class="js-potSum">0.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Настил пола</td>
+                                            <td class="js-pol">Линолеум</td>
+                                            <td class="js-polNum">2.4 м/кв</td>
+                                            <td class="js-polSum">0.00</td>
+                                        </tr>
+                                        <tr class="js-narVis uk-hidden">
+                                            <td>Отделка с улицы</td>
+                                            <td class="js-nar">Нет</td>
+                                            <td class="js-narNum">0.0 м/кв</td>
+                                            <td class="js-narSum">0.00</td>
+                                        </tr>
+                                        <tr class="js-pokVis uk-hidden">
+                                            <td>Установка подоконника</td>
+                                            <td class="js-pok">Не нужен мм</td>
+                                            <td class="js-pokNum">0.0 м/п</td>
+                                            <td class="js-pokSum">0.00</td>
+                                        </tr>
+                                        <tr class="js-unarVis uk-hidden">
+                                            <td>Утепление ограждения</td>
+                                            <td class="js-unar">
+                                                Пенополистирол 30 мм
+                                            </td>
+                                            <td class="js-unarNum">0.0 м/кв</td>
+                                            <td class="js-unarSum">0.00</td>
+                                        </tr>
+                                        <tr class="js-upotVis uk-hidden">
+                                            <td>Утепление потолка</td>
+                                            <td class="js-upot">
+                                                Пенополистирол 30 мм
+                                            </td>
+                                            <td class="js-upotNum">2.4 м/кв</td>
+                                            <td class="js-upotSum">0.00</td>
+                                        </tr>
+                                        <tr class="js-upolVis uk-hidden">
+                                            <td>Утепление пола</td>
+                                            <td class="js-upol">
+                                                Пенополистирол 30 мм
+                                            </td>
+                                            <td class="js-upolNum">2.4 м/кв</td>
+                                            <td class="js-upolSum">0.00</td>
+                                        </tr>
+                                        <tr class="js-ekaVis uk-hidden">
+                                            <td>Электрика</td>
+                                            <td>Материал заказчика</td>
+                                            <td>3 точки</td>
+                                            <td class="js-ekaSum">0.00</td>
+                                        </tr>
+                                        <tr class="js-suhVis uk-hidden">
+                                            <td>Установка сушилки</td>
+                                            <td>Материал заказчика</td>
+                                            <td>1 шт.</td>
+                                            <td class="js-suhSum">0.00</td>
+                                        </tr>
+                                        <tr class="js-demVis uk-hidden">
+                                            <td colspan="2">
+                                                Демонтаж без вывоза мусора
+                                            </td>
+                                            <td>до 3 м/кв</td>
+                                            <td class="js-demSum">0.00</td>
+                                        </tr>
+                                        <tr
+                                            class="uk-h4"
+                                            style="border-top: 4px solid"
+                                        >
+                                            <td
+                                                class="uk-text-right"
+                                                colspan="3"
+                                            >
+                                                Итого:
+                                            </td>
+                                            <td
+                                                class="js-sumSum uk-text-nowrap"
+                                            >
+                                                0 ₽
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="uk-margin-medium">
+                                <textarea
+                                    id="kz"
+                                    cols=""
+                                    rows="5"
+                                    placeholder="Комментарий к заказу"
+                                    class="uk-textarea"
+                                ></textarea>
+                            </div>
+                            <div class="uk-placeholder uk-margin uk-text-bold">
+                                <p>
+                                    * В стоимость отделки лоджии входит материал
+                                    и работа<br />** В стоимость не входит
+                                    доставка и подъем материала на этаж<br />***
+                                    Указанная стоимость не является публичной
+                                    офертой в определении ст.437 ГК РФ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-expand uk-padding">
+                        <button
+                            class="uk-modal-close-default uk-modal-close uk-close uk-icon"
+                            type="button"
+                            uk-close=""
+                        >
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <line
+                                    fill="none"
+                                    stroke="#000"
+                                    stroke-width="4"
+                                    x1="1"
+                                    y1="1"
+                                    x2="19"
+                                    y2="19"
+                                ></line>
+                                <line
+                                    fill="none"
+                                    stroke="#000"
+                                    stroke-width="4"
+                                    x1="19"
+                                    y1="1"
+                                    x2="1"
+                                    y2="19"
+                                ></line>
+                            </svg>
+                        </button>
+                        <h3>Вызов замерщика</h3>
+                        <p class="uk-text-meta">
+                            Точная стоимость заказа может быть определена только
+                            после выезда замерщика.<br />Для оформления заявки
+                            заполните следующие данные:
+                        </p>
+                        <div
+                            class="uk-child-width-1-2@s uk-grid-small uk-grid"
+                            uk-grid=""
+                        >
+                            <div class="uk-first-column">
+                                <label></label>
+                                <input
+                                    name="field1"
+                                    id="field1"
+                                    required=""
+                                    type="text"
+                                    class="uk-input"
+                                    placeholder="Ваше имя"
+                                />
+                            </div>
+                            <div>
+                                <label></label>
+                                <input
+                                    name="field3"
+                                    id="field3"
+                                    required=""
+                                    type="text"
+                                    class="uk-input"
+                                    placeholder="Телефон"
+                                />
+                            </div>
+                        </div>
+                        <div class="uk-margin-top">
+                            <label></label>
+                            <textarea
+                                required=""
+                                rows="5"
+                                cols="20"
+                                name="field2"
+                                id="field2"
+                                class="uk-textarea"
+                                placeholder="Адрес замера"
+                            ></textarea>
+                        </div>
+                        <div class="uk-margin" uk-margin="">
+                            <button
+                                id="go1"
+                                type="button"
+                                class="uk-button uk-button-secondary uk-first-column"
+                            >
+                                Отправить
+                            </button>
+                            <button
+                                class="uk-modal-close uk-button uk-button-default"
+                                type="button"
+                            >
+                                Закрыть
+                            </button>
+                        </div>
+                        <p
+                            class="uk-text-small uk-margin-remove-bottom uk-text-muted"
+                        >
+                            Заполняя форму Вы соглашаетесь с
+                            <!-- <a href="/fail/confidential.pdf" target="_blank"
+                                >политикой конфиденциальности</a
+                            > -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <link rel="stylesheet" href="http://www.balkon-spb.ru/css/prise.css" />
+        <script src="http://www.balkon-spb.ru/js/scripts.min.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
